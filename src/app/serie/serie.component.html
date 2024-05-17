@@ -1,47 +1,51 @@
 <div class="container">
+  
   <div class="row">
     <br/>
     <br/>
   </div>
-  <div class="col-6">
-    
-    <table class="table table-striped">
-      <thead class ="thead-dark">
-        <tr>
-          <th scope="col">#</th>
 
-          <th scope="col">name</th>
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">channel</th>
+            <th scope="col">seasons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of series" (click)="selectedSerie = s">
+            <td>
+              <dd>{{s.id}}</dd>
+            </td>
 
-          <th scope="col">channel</th>
+            <td>
+              <dd>{{s.name}}</dd>
+            </td>
 
-          <th scope="col">seasons</th>
-        </tr>
-      </thead>
-      <tbody>
+            <td>
+              <dd>{{s.channel}}</dd>
+            </td>
 
-        <tr *ngFor="let s of series">
-          <td>
+            <td>
+              <dd>{{s.seasons}}</dd>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-            <dd>{{s.id}}</dd>
-          </td>
-          <td>
+    <div class="col-4">
+      <app-serie-detail [serie]="selectedSerie"></app-serie-detail>
 
-            <dd>{{s.name}}</dd>
-          </td>
-          <td>
-
-            <dd>{{s.channel}}</dd>
-          </td>
-          <td>
-
-            <dd>{{s.seasons}}</dd>
-          </td>
-      </tr>
-      </tbody>
-    </table>
-
+    </div>
   </div>
+
   <div class="row">
     <p>Promedio temporadas: {{ calculateSeasonsAverage(series) }}</p>
-</div>
+  </div>
+
 </div>
